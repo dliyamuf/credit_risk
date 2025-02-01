@@ -5,6 +5,7 @@ Menurut OJK, risiko kredit adalah risiko akibat kegagalan debitur dan/atau pihak
 **Tujuan**
 - Memperoleh fitur yang paling memengaruhi risiko kredit.
 - Memprediksi risiko kredit peminjam berdasarkan dataset dengan akurasi >95.00%.
+
 **Objektif**
 - Menganalisis data histori dan hubungan antar fitur untuk mendapat pola risiko kredit.
 - Membuat model klasifikasi machine learning agar hasil prediksi akurat dan presisi.
