@@ -88,6 +88,7 @@ Beberapa kolom numerik memiliki korelasi sangat tinggi (>0.7). Kolom tersebut di
   <img src="image/cm%20lr.png" />
   <img src="image/cm%20rf.png" />
   <img src="image/cm%20xgb.png" />
+
 - Random Forest kemungkinan overfit sangat tinggi sehingga model ini belum bisa menangkap pola dengan baik bila diberi data lain. Selain itu, waktu komputasinya sangat lama.
 - Logistic regression memiliki akurasi yang sangat baik dan tidak overfit, hanya saja recall score sangat kecil. Artinya, banyak kategori high risk yang diprediksi sebagai low risk yang mana sangat membahayakan. Selain itu, waktu komputasinya juga lama.
 - XGBoost memiliki akurasi sangat baik, tidak overfit, tetapi skor recall relatif lebih kecil dari algoritma Random Forest. Meskipun demikian, presisinya sangat baik, artinya dapat menangkap kasus low risk dengan sangat baik. Kelebihan lain dari algoritma ini adalah waktu komputasinya sangat singkat.
