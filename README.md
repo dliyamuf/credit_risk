@@ -20,14 +20,14 @@ Menurut OJK, risiko kredit adalah risiko akibat kegagalan debitur dan/atau pihak
 - **High risk** : kredit berisiko tinggi,"Charged Off", "Does not meet the credit policy. Status:Charged Off", "Default", "Late (16-30 days)", dan "Late (31-120 days)”
 
 ## **3. EXPLORATORY DATA ANALYSIS**
-![distribusi risiko](image/distribusi risk.png)
+![distribusi risiko](image/distribusi%20risk.png)
 Mayoritas (89%) dataset adalah kredit berisiko rendah.
 
 ### **3.1 Analisis univariat**
-(image num)
+![univariat numerik](image/univariat%20num.png)
 - Kolom **funded_amnt**, **total_pymnt**, **loan_amnt**, **total_acc**, dan **dti** lebih condong ke kanan.
 - **Pendapatan** peminjam (berdasarkan kolom **annual_inc**) mayoritas berada **di bawah 1.000.000**
-(image cat)
+![univariat cat](image/univariat%20cat.png)
 - Rumah peminjam kebanyakan adalah KPR (MORTRAGE).
 - Kelas paling banyak adalah B.
 - Termin paling banyak adalah 36 bulan.
@@ -35,14 +35,14 @@ Mayoritas (89%) dataset adalah kredit berisiko rendah.
 - Kebanyakan tujuan peminjam adalah membayar utang.
 
 ### **3.2 Analisis bivariat**
-(image cat)
+![bivariat cat](image/bivariat%20cat.png)
 - Peminjam yang **tidak memiliki status kepemilikan rumah (OTHER atau NONE)** memiliki **risiko lebih tinggi** jika kredit pinjaman disetujui.
 - Semakin **tinggi kelas**, tingkat **risiko pinjaman meningkat**. Kelas G lebih tinggi tingkatnya dari A.
 - Pinjaman berjangka **60 bulan berisiko lebih tinggi**.
 - **Status verifikasi** pada risiko pinjaman/kredit tinggi dan rendah **hampir sama**.
 - **Rencana peminjaman** yang telah **dilaksanakan (y)** ternyata lebih banyak **berisiko tinggi**.
 - Tujuan dari **peminjaman yang berisiko tinggi** kebanyakan adalah untuk **pendidikan dan bisnis kecil (UMKM)**
-(image num)
+![bivariat num-cat](image/univariat%20num-cat.png)
 - Pembayaran kredit yang diterima bulan lalu paling banyak berasal dari peminjam dengan kepemilikan rumah **MORTGAGE**.
 - Kelas **G** menyumbang pembayaran kredit yang diterima bulan lalu **paling banyak** dan kelas **B** menyumbang **paling sedikit**.
 - Kredit berjangka waktu **60 bulan** **paling banyak menyumbang** pembayaran kredit yang diterima bulan lalu.
@@ -69,24 +69,25 @@ Untuk melihat bagaimana histori dari tiap peminjam, akan dibuat kolom baru:
 ### **4.5 Feature Selection**
 - Dilakukan feature encoding pada kolom kategori.
 - Dilakukan juga one-hot encoding pada kolom term, home_ownership, verification_status, dan purpose.
-(Image corr)
+![risk coor](image/risk%20coord.png)
 - Dilakukan seleksi fitur berdasarkan korelasi Pearson terhadap kolom target (risk) 20 fitur teratas.
 - 5 fitur teratas yang berkorelasi tinggi terhadap risk adalah fitur recoveries, collection_recovery_fee, total_rec_prncp, total_pymnt_inv, dan total_pymnt.
-(image heatmap)
+![heatmap](image/heatmap.png)
 Beberapa kolom numerik memiliki korelasi sangat tinggi (>0.7). Kolom tersebut dihapus untuk memfokuskan analisis.
 - Diantara kolom total_pymnt_inv, total_pymnt, dan total_rec_prncp, kita akan gunakan kolom total_pymnt karena menunjukkan jumlah dana pinjaman yang diterima dari peminjam.
 - Kemudian, diantara kolom grade, sub_grade, dan int_rate kita pertahankan kolom grade karena menunjukkan kelas/tingkat pinjaman.
 - Lalu, diantara kolom out_prncp dan out_prncp_inv, kita pilih kolom out_prncp yang menunjukkan sisa pokok terutang dari jumlah pokok yang didanai.
 - Terakhir, diantara kolom recoveries dan collection_recovery_fee, kita pilih kolom recoveries yang menunjukkan apakah peminjam telah memiliki rencana pembayaran.
+![feature selection](feature%20selection.png)
 ### **4.6 Data Split**
 - Digunakan train-test set dengan proposi 80:20. Train set digunakan untuk melatih data pada algoritma machine learning. Sementara itu, test set digunakan dalam evaluasi model machine learning.
 ### **4.7 Standarisasi**
 - Dilakukan standarisasi pada tiap kolom menggunakan Standard Scaler.
 ## **5. Data Modeling and Evaluation**
-(image tabel)
-(image cm lr)
-(image cm rf)
-(image cm xgb)
+![evaluation model](image/evaluation%20table.png)
+![confusion matrix logistic reg](image/cm%20lr.png)
+![confusion matrix rf](image/cm%20rf.png)
+![confusion matrix xgb](image/cm%20xgb.png)
 - Random Forest kemungkinan overfit sangat tinggi sehingga model ini belum bisa menangkap pola dengan baik bila diberi data lain. Selain itu, waktu komputasinya sangat lama.
 - Logistic regression memiliki akurasi yang sangat baik dan tidak overfit, hanya saja recall score sangat kecil. Artinya, banyak kategori high risk yang diprediksi sebagai low risk yang mana sangat membahayakan. Selain itu, waktu komputasinya juga lama.
 - XGBoost memiliki akurasi sangat baik, tidak overfit, tetapi skor recall relatif lebih kecil dari algoritma Random Forest. Meskipun demikian, presisinya sangat baik, artinya dapat menangkap kasus low risk dengan sangat baik. Kelebihan lain dari algoritma ini adalah waktu komputasinya sangat singkat.
