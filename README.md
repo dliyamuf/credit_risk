@@ -69,7 +69,7 @@ Untuk melihat bagaimana histori dari tiap peminjam, akan dibuat kolom baru:
 ### **4.5 Feature Selection**
 - Dilakukan feature encoding pada kolom kategori.
 - Dilakukan juga one-hot encoding pada kolom term, home_ownership, verification_status, dan purpose.
-![risk coor](image/risk%20coord.png)
+![risk coor](image/risk%20coor.png)
 - Dilakukan seleksi fitur berdasarkan korelasi Pearson terhadap kolom target (risk) 20 fitur teratas.
 - 5 fitur teratas yang berkorelasi tinggi terhadap risk adalah fitur recoveries, collection_recovery_fee, total_rec_prncp, total_pymnt_inv, dan total_pymnt.
 ![heatmap](image/heatmap.png)
@@ -78,14 +78,16 @@ Beberapa kolom numerik memiliki korelasi sangat tinggi (>0.7). Kolom tersebut di
 - Kemudian, diantara kolom grade, sub_grade, dan int_rate kita pertahankan kolom grade karena menunjukkan kelas/tingkat pinjaman.
 - Lalu, diantara kolom out_prncp dan out_prncp_inv, kita pilih kolom out_prncp yang menunjukkan sisa pokok terutang dari jumlah pokok yang didanai.
 - Terakhir, diantara kolom recoveries dan collection_recovery_fee, kita pilih kolom recoveries yang menunjukkan apakah peminjam telah memiliki rencana pembayaran.
-![feature selection](feature%20selection.png)
+![feature selection](image/feature%20selection.png)
 ### **4.6 Data Split**
 - Digunakan train-test set dengan proposi 80:20. Train set digunakan untuk melatih data pada algoritma machine learning. Sementara itu, test set digunakan dalam evaluasi model machine learning.
 ### **4.7 Standarisasi**
 - Dilakukan standarisasi pada tiap kolom menggunakan Standard Scaler.
 ## **5. Data Modeling and Evaluation**
 ![evaluation model](image/evaluation%20table.png)
-![confusion matrix logistic reg](image/cm%20lr.png)
+<p align="center">
+  <img src="image/cm%20lr.png" />
+</p>
 ![confusion matrix rf](image/cm%20rf.png)
 ![confusion matrix xgb](image/cm%20xgb.png)
 - Random Forest kemungkinan overfit sangat tinggi sehingga model ini belum bisa menangkap pola dengan baik bila diberi data lain. Selain itu, waktu komputasinya sangat lama.
