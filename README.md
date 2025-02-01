@@ -89,12 +89,11 @@ Beberapa kolom numerik memiliki korelasi sangat tinggi (>0.7). Kolom tersebut di
 ![evaluation model](image/evaluation%20table.png)
 <p align="center">
   <img src="image/cm%20lr.png" />
-</p>
-![confusion matrix rf](image/cm%20rf.png)
-![confusion matrix xgb](image/cm%20xgb.png)
+
 - Random Forest kemungkinan overfit sangat tinggi sehingga model ini belum bisa menangkap pola dengan baik bila diberi data lain. Selain itu, waktu komputasinya sangat lama.
 - Logistic regression memiliki akurasi yang sangat baik dan tidak overfit, hanya saja recall score sangat kecil. Artinya, banyak kategori high risk yang diprediksi sebagai low risk yang mana sangat membahayakan. Selain itu, waktu komputasinya juga lama.
 - XGBoost memiliki akurasi sangat baik, tidak overfit, tetapi skor recall relatif lebih kecil dari algoritma Random Forest. Meskipun demikian, presisinya sangat baik, artinya dapat menangkap kasus low risk dengan sangat baik. Kelebihan lain dari algoritma ini adalah waktu komputasinya sangat singkat.
 ## **6. Conclusion**
 - Fitur yang paling berkorelasi dengan risiko kredit adalah **recoveries, collection_recovery_fee, total_rec_prncp,** dan **total_pymnt**.
 - Algoritma machine learning yang paling cocok untuk prediksi kredit analisis adalah **XGBoost** dengan test score akurasi 97.41%, presisi 94.53%, recall 80.39%, dan f1 86.89%.
+</p>
