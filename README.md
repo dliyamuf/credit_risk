@@ -10,7 +10,7 @@ Menurut OJK, risiko kredit adalah risiko akibat kegagalan debitur dan/atau pihak
 - Membuat model klasifikasi machine learning agar hasil prediksi akurat dan presisi.
 
 ## **2. DATA UNDERSTANDING**
-(image)
+- Dataset yang digunakan berasal dari perusahaan ID/X partners.
 - Dataset terdiri dari 75 kolom dan 466.285 baris, bertipe: float64, int64, dan object.
 - Kolom yang memiliki 70% nilai kosong dihapus.
 - Kolom yang memiliki 1 nilai unik dihapus.
@@ -20,7 +20,7 @@ Menurut OJK, risiko kredit adalah risiko akibat kegagalan debitur dan/atau pihak
 - **High risk** : kredit berisiko tinggi,"Charged Off", "Does not meet the credit policy. Status:Charged Off", "Default", "Late (16-30 days)", dan "Late (31-120 days)”
 
 ## **3. EXPLORATORY DATA ANALYSIS**
-(image)
+![distribusi risiko](image/distribusi risk.png)
 Mayoritas (89%) dataset adalah kredit berisiko rendah.
 
 ### **3.1 Analisis univariat**
