@@ -69,7 +69,6 @@ Untuk melihat bagaimana histori dari tiap peminjam, akan dibuat kolom baru:
 ### **4.5 Feature Selection**
 - Dilakukan feature encoding pada kolom kategori.
 - Dilakukan juga one-hot encoding pada kolom term, home_ownership, verification_status, dan purpose.
-![risk coor](image/risk%20corr.png)
 - Dilakukan seleksi fitur berdasarkan korelasi Pearson terhadap kolom target (risk) 20 fitur teratas.
 - 5 fitur teratas yang berkorelasi tinggi terhadap risk adalah fitur recoveries, collection_recovery_fee, total_rec_prncp, total_pymnt_inv, dan total_pymnt.
 ![heatmap](image/heatmap.png)
@@ -79,8 +78,6 @@ Beberapa kolom numerik memiliki korelasi sangat tinggi (>0.7). Kolom tersebut di
 - Lalu, diantara kolom out_prncp dan out_prncp_inv, kita pilih kolom out_prncp yang menunjukkan sisa pokok terutang dari jumlah pokok yang didanai.
 - Terakhir, diantara kolom recoveries dan collection_recovery_fee, kita pilih kolom recoveries yang menunjukkan apakah peminjam telah memiliki rencana pembayaran.
 
-![feature selection](image/feature%20selection.png)
-
 ### **4.6 Data Split**
 - Digunakan train-test set dengan proposi 80:20. Train set digunakan untuk melatih data pada algoritma machine learning. Sementara itu, test set digunakan dalam evaluasi model machine learning.
 ### **4.7 Standarisasi**
@@ -89,7 +86,8 @@ Beberapa kolom numerik memiliki korelasi sangat tinggi (>0.7). Kolom tersebut di
 ![evaluation model](image/evaluation%20table.png)
 <p align="center">
   <img src="image/cm%20lr.png" />
-
+  <img src="image/cm%20rf.png" />
+  <img src="image/cm%20xgb.png" />
 - Random Forest kemungkinan overfit sangat tinggi sehingga model ini belum bisa menangkap pola dengan baik bila diberi data lain. Selain itu, waktu komputasinya sangat lama.
 - Logistic regression memiliki akurasi yang sangat baik dan tidak overfit, hanya saja recall score sangat kecil. Artinya, banyak kategori high risk yang diprediksi sebagai low risk yang mana sangat membahayakan. Selain itu, waktu komputasinya juga lama.
 - XGBoost memiliki akurasi sangat baik, tidak overfit, tetapi skor recall relatif lebih kecil dari algoritma Random Forest. Meskipun demikian, presisinya sangat baik, artinya dapat menangkap kasus low risk dengan sangat baik. Kelebihan lain dari algoritma ini adalah waktu komputasinya sangat singkat.
